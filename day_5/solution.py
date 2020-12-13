@@ -28,14 +28,14 @@ def get_number_from_binary(chars, char_left_half, char_right_half):
     return int(left)
 
 
-def get_seat_info(char_str):
+def get_seat_id(char_str):
     row_str, column_str = split_string(char_str)
 
     row_number = get_number_from_binary(row_str, 'F', 'B')
     col_number = get_number_from_binary(column_str, 'L', 'R')
     seat_id = row_number * 8 + col_number
 
-    return (row_number, col_number, seat_id)
+    return seat_id
 
 
 def read_and_parse_lines(file_path):
@@ -45,6 +45,12 @@ def read_and_parse_lines(file_path):
 
 input = read_and_parse_lines('input.txt')
 
-seat_ids = [get_seat_info(line)[2] for line in input]
+seat_ids = [get_seat_id(line) for line in input]
 
+# Part 1 solution
 print(max(seat_ids))
+
+# Part 2 solution
+for i in range(min(seat_ids), max(seat_ids) + 1):
+    if i not in seat_ids:
+        print(i)

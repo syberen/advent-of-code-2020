@@ -1,15 +1,15 @@
 import unittest
 
-from solution import get_seat_info
+from solution import get_seat_id
 
 
-class TestCount(unittest.TestCase):
-    def test_count_valid_passports_by_fields_present(self):
+class TestFunctions(unittest.TestCase):
+    def test_get_seat_id(self):
         """ Assert that get_seat_info returns the right data for given input """
 
-        self.assertEqual(get_seat_info('BFFFBBFRRR'), (70, 7, 567))
-        self.assertEqual(get_seat_info('FFFBBBFRRR'), (14, 7, 119))
-        self.assertEqual(get_seat_info('BBFFBBFRLL'), (102, 4, 820))
+        self.assertEqual(get_seat_id('BFFFBBFRRR'), 567)
+        self.assertEqual(get_seat_id('FFFBBBFRRR'), 119)
+        self.assertEqual(get_seat_id('BBFFBBFRLL'), 820)
 
 
 if __name__ == '__main__':
